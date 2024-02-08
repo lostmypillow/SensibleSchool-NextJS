@@ -1,7 +1,6 @@
 "use client";
 import { Group, Avatar, Text, Accordion } from "@mantine/core";
 import { NavLink } from "@mantine/core";
-import classes from "./styles.css";
 
 function CoursesLogo() {
   return (
