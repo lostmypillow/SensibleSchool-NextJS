@@ -1,6 +1,7 @@
 "use client";
 import { Group, Avatar, Text, Accordion } from "@mantine/core";
 import { NavLink } from "@mantine/core";
+import classes from "./styles.css";
 
 function CoursesLogo() {
   return (
@@ -39,82 +40,152 @@ function ServicesLogo() {
   );
 }
 
-const charactersList = [
-  {
-    id: "bender",
-    image: <CoursesLogo />,
-    label: "Courses",
-    description: "Fascinated with cooking, though has no sense of taste",
-    content:
-      "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-
-  {
-    id: "carol",
-    image: <StudentsLogo />,
-    label: "Students",
-    description: "One of the richest people on Earth",
-    content:
-      "Carol Miller (born January 30, 2880), better known as Mom, is the evil chief executive officer and shareholder of 99.7% of Momcorp, one of the largest industrial conglomerates in the universe and the source of most of Earth's robots. She is also one of the main antagonists of the Futurama series.",
-  },
-
-  {
-    id: "homer",
-    image: <ServicesLogo />,
-    label: "Services",
-    description: "Overweight, lazy, and often ignorant",
-    content:
-      "Homer Jay Simpson (born May 12) is the main protagonist and one of the five main characters of The Simpsons series(or show). He is the spouse of Marge Simpson and father of Bart, Lisa and Maggie Simpson.",
-  },
-];
-
-interface AccordionLabelProps {
-  label: string;
-  image: React.ReactNode;
-  description: string;
-}
-
-function AccordionLabel({ label, image, description }: AccordionLabelProps) {
+function CourseNav() {
   return (
-    <Group wrap="nowrap">
-      {image}
-      <div>
-        <Text>{label}</Text>
-        <Text size="sm" c="dimmed" fw={400}></Text>
-      </div>
-    </Group>
+    <>
+      <NavLink
+        href="/courses/schedule"
+        label="Schedule"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/viewCourses"
+        label="View Courses"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/addDrop"
+        label="Add/Drop Course"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/rollCall"
+        label="Roll Call"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/classroom"
+        label="Classroom"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/homework"
+        label="Homework"
+        description="Additional information"
+      />
+      <NavLink
+        href="/courses/exams"
+        label="Tests and Exams"
+        description="Additional information"
+      />
+    </>
   );
 }
 
-function LobbyContainer() {
-  return <div className="flex items-center justify-center"></div>;
-}
-
-export default function Demo() {
-  const items = charactersList.map((item) => (
-    <Accordion.Item value={item.id} key={item.label}>
-
-      <Accordion.Control>
-        <AccordionLabel {...item} />
-      </Accordion.Control>
-
-      <Accordion.Panel>
-        <NavLink href="#required-for-focus" label="With icon" />
-        <NavLink
-        href="#required-for-focus"
-        label="With icon"
+function StudentsNav() {
+  return (
+    <>
+      <NavLink
+        href="/student/profile"
+        label="Your Profile"
+        description="Additional information"
       />
       <NavLink
-        href="#required-for-focus"
-        label="With icon"
+        href="/student/scores"
+        label="Your Scores"
+        description="Additional information"
       />
-      </Accordion.Panel>
+      <NavLink
+        href="/student/attendance"
+        label="Your Attendance"
+        description="Additional information"
+      />
+      <NavLink
+        href="applyorReserve"
+        label="Apply or Reserve"
+        description="Additional information"
+      />
+      <NavLink
+        href="/student/vote"
+        label="Vote!"
+        description="Additional information"
+      />
+    </>
+  );
+}
+
+function ServicesNav() {
+  return (
+    <>
+      <NavLink
+        href="/services/mail"
+        label="Mail"
+        description="Additional information"
+      />
+      <NavLink
+        href="/services/announcements"
+        label="Announcements"
+        description="Additional information"
+      />
+      <NavLink
+        href="/services/softCloud"
+        label="SoftCloud"
+        description="Additional information"
+      />
+      <NavLink
+        href="/services/vcpai"
+        label="VCP-AI"
+        description="Additional information"
+      />
+      <NavLink
+        href="/services/netStatus"
+        label="Network Status"
+        description="Additional information"
+      />
+    </>
+  );
+}
+
+const groceries = [
+  {
+    emoji: <CoursesLogo />,
+    value: "Courses",
+    description: <CourseNav />,
+  },
+  {
+    emoji: <StudentsLogo />,
+    value: "Student",
+    description: <StudentsNav />,
+  },
+  {
+    emoji: <ServicesLogo />,
+    value: "Services",
+    description: <ServicesNav />,
+  },
+];
+
+export default function Demo() {
+  // See groceries data above
+  const items = groceries.map((item) => (
+    <Accordion.Item key={item.value} value={item.value}>
+      <Accordion.Control icon={item.emoji}>{item.value}</Accordion.Control>
+      <Accordion.Panel>{item.description}</Accordion.Panel>
     </Accordion.Item>
   ));
 
   return (
-    <Accordion chevronPosition="right" variant="contained">
-      {items}
-    </Accordion>
+    <div className="mx-5 lg:flex lg:items-center lg:justify-center">
+      <Accordion
+        variant="separated"
+        radius="xl"
+        defaultValue="Courses"
+        styles={{
+          item: { backgroundColor: "aliceblue" },
+        }}
+        className="lg:w-1/3"
+      >
+        {items}
+      </Accordion>
+    </div>
   );
 }
