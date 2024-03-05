@@ -8,8 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-#### Tailwind CSS Intellisense
-[VSCode Extension].([https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss])
+
+[Tailwind CSS Intellisense]([https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss])
+[PostCSS Intellisense]([https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-postcss])
 
 ```
 Give examples
@@ -59,9 +60,10 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [Vite](https://vitejs.dev/) - Build Tool
+* [React](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
 
 ## Contributing
 
